@@ -1,0 +1,15 @@
+body{
+  color: orange;
+}
+#logo{
+  width: 91px;
+  height: 72px;
+}
+#nombre{
+  text-align: center;
+}
+.fotos{
+  width: 300px;
+  height: 200px;
+  text-align: right;
+}

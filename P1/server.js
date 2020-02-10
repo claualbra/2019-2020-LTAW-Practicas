@@ -1,23 +1,41 @@
-//-- Puerto donde recibir las peticiones
-const PUERTO = 8080;
-
-//-- Modulo http, ayuda a gestionar peticiones y respuestas
 const http = require('http');
+const url = require('url');
+const fs = require('fs');
+const PUERTO = 8080
+//--Pregunta examen que devuelva otra peticion o añadir puertas traseras
+//-- Configurar y lanzar el servidor. Por cada peticion recibida
+//-- se imprime un mensaje en la consola
+http.createServer((req, res) => {
+  console.log("----------> Peticion recibida")
+  let q = url.parse(req.url, true);
+  console.log("Recurso:" + q.pathname)
 
-console.log("Arrancando servidor...")
 
-//-- Funcion para atender a una Peticion
-//-- req: Mensaje de solicitud
-//-- res: Mensaje de respuesta
-//-- Configurar el servidor
-http.createServer( (req, res) => {
-  //-- Peticion recibida
-  console.log("Peticion recibida!")
+  let filename = ""
 
-  //-- Crear mensaje de respuesta
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.end('Hello World!');
+  //-- Obtener fichero a devolver
+  if (q.pathname == "/"){
+    filename += "index.html"
+  }  
+  //-- Leer fichero
+  fs.readFile(filename, function(err, data) {
+
+    //-- Fichero no encontrado. Devolver mensaje de error
+    if (err) {
+      res.writeHead(404, {'Content-Type': 'text/html'});
+      return res.end("404 Not Found");
+    }
+
+    //-- Tipo mime por defecto: html
+    let mime = "text/html"
+
+    //-- Generar el mensaje de respuesta
+    res.writeHead(200, {'Content-Type': mime});
+    res.write(data);
+    res.end();
+  });
+
 }).listen(PUERTO);
 
-console.log("Servidor LISTO!")
-console.log("Escuchando en puerto: " + PUERTO)
+console.log("Servidor corriendo...")
+console.log("Puerto: " + PUERTO)
