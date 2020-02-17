@@ -2,6 +2,7 @@ from django.shortcuts import render
 from random import randint
 from django.template import Context, Template
 from django.template.loader import get_template
+from django.shortcuts import render
 # Create your views here.
 # -- Fichero mi_tienda/views.py
 from django.http import HttpResponse
