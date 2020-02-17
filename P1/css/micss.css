@@ -1,5 +1,7 @@
 body{
   color: orange;
+  background-image: url("fondo.jpg");
+  background-size: cover;
 }
 #logo{
   width: 91px;
@@ -11,5 +13,9 @@ body{
 .fotos{
   width: 300px;
   height: 200px;
-  text-align: right;
+  float: right;
+}
+a {
+  color: red;
+  float: center;
 }
