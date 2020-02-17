@@ -14,9 +14,13 @@ http.createServer((req, res) => {
   let filename = ""
 
   //-- Obtener fichero a devolver
-  if (q.pathname == "/"){
+  if (q.pathname == "/") {
     filename += "index.html"
-  }  
+  } else {
+    filename += q.pathname
+  }
+  var str = filename.split("/").reverse()[0]
+  console.log(str);
   //-- Leer fichero
   fs.readFile(filename, function(err, data) {
 
