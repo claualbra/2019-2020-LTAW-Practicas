@@ -12,29 +12,40 @@ http.createServer((req, res) => {
 
 
   let filename = ""
-
+  const mime = {
+   'html' : 'text/html',
+   'css'  : 'text/css',
+   'jpg'  : 'image/jpg',
+   'png'  : 'image/png',
+   'ico'  : 'image/x-icon',
+   'mp3'  :	'audio/mpeg3',
+   'mp4'  : 'video/mp4'
+  };
   //-- Obtener fichero a devolver
   if (q.pathname == "/") {
     filename += "index.html"
   } else {
     filename += q.pathname
   }
-  var str = filename.split("/").reverse()[0]
-  console.log(str);
+  var str = filename
+    console.log(str);
   //-- Leer fichero
-  fs.readFile(filename, function(err, data) {
-
+  fs.readFile(str, function(err, data) {
+    console.log("data");
+    //-- Tipo mime por defecto: html
+    console.log(str.split(".")[1]);
+    let mimeType =  mime[str.split(".")[1]];
+    console.log(mimeType);
     //-- Fichero no encontrado. Devolver mensaje de error
-    if (err) {
-      res.writeHead(404, {'Content-Type': 'text/html'});
+    if (!err) {
+      //-- Generar el mensaje de respuesta
+      console.log("h");
+      res.writeHead(200, {'Content-Type': mimeType});
+    } else {
+      res.writeHead(404, {'Content-Type': mimeType});
       return res.end("404 Not Found");
     }
-
-    //-- Tipo mime por defecto: html
-    let mime = "text/html"
-
-    //-- Generar el mensaje de respuesta
-    res.writeHead(200, {'Content-Type': mime});
+    console.log();
     res.write(data);
     res.end();
   });
