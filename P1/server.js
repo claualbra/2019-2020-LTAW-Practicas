@@ -23,12 +23,12 @@ http.createServer((req, res) => {
   };
   //-- Obtener fichero a devolver
   if (q.pathname == "/") {
-    filename += "index.html"
+    filename += "/index.html"
   } else {
     filename += q.pathname
   }
   var str = filename
-    console.log(str);
+    console.log(filename.split("/")[1]);
   //-- Leer fichero
   fs.readFile(str, function(err, data) {
     console.log("data");
@@ -36,16 +36,16 @@ http.createServer((req, res) => {
     console.log(str.split(".")[1]);
     let mimeType =  mime[str.split(".")[1]];
     console.log(mimeType);
+    console.log(err);
     //-- Fichero no encontrado. Devolver mensaje de error
-    if (!err) {
+    if (err == null) {
       //-- Generar el mensaje de respuesta
-      console.log("h");
       res.writeHead(200, {'Content-Type': mimeType});
     } else {
+      console.log("h");
       res.writeHead(404, {'Content-Type': mimeType});
       return res.end("404 Not Found");
     }
-    console.log();
     res.write(data);
     res.end();
   });
