@@ -27,22 +27,17 @@ http.createServer((req, res) => {
   } else {
     filename += q.pathname
   }
-  var str = filename
-    console.log(filename.split("/")[1]);
+
+  let str = filename.substr(1)
   //-- Leer fichero
   fs.readFile(str, function(err, data) {
-    console.log("data");
     //-- Tipo mime por defecto: html
-    console.log(str.split(".")[1]);
     let mimeType =  mime[str.split(".")[1]];
-    console.log(mimeType);
-    console.log(err);
     //-- Fichero no encontrado. Devolver mensaje de error
     if (err == null) {
       //-- Generar el mensaje de respuesta
       res.writeHead(200, {'Content-Type': mimeType});
     } else {
-      console.log("h");
       res.writeHead(404, {'Content-Type': mimeType});
       return res.end("404 Not Found");
     }
