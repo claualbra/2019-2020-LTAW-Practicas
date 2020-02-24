@@ -33,6 +33,7 @@ http.createServer((req, res) => {
   fs.readFile(str, function(err, data) {
     //-- Tipo mime por defecto: html
     let mimeType =  mime[str.split(".")[1]];
+    console.log(err);
     //-- Fichero no encontrado. Devolver mensaje de error
     if (err == null) {
       //-- Generar el mensaje de respuesta

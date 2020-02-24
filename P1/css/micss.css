@@ -2,20 +2,21 @@ body{
   color: orange;
   background-image: url("fondo.jpg");
   background-size: cover;
-}
-#logo{
-  width: 91px;
-  height: 72px;
+  font-size: 20px;
 }
 #nombre{
   text-align: center;
+  font-size: 100px;
 }
 .fotos{
   width: 300px;
   height: 200px;
-  float: right;
+  margin: 20px 0px 0px 0px;
 }
 a {
   color: red;
   float: center;
+}
+#lista{
+  text-align: center;
 }
