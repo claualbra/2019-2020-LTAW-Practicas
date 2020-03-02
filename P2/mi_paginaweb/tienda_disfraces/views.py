@@ -6,3 +6,9 @@ from django.shortcuts import render
 # -- Vista principal de mi tienda de disfraces
 def index(request):
     return render(request, 'index.html', {})
+def halloween(request):
+    return render(request, 'halloween.html', {})
+def navidad(request):
+    return render(request, 'navidad.html', {})
+def ninos(request):
+    return render(request, 'ninos.html', {})
