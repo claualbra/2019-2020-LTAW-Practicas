@@ -1,0 +1,24 @@
+body {
+  background-color: lightblue;
+}
+
+p {
+  color: green;
+  text-align: center;
+  font-size: 50px;
+}
+
+h1{
+  text-align: center;
+  font-size: 100px;
+}
+#mapa{
+  width: 665px;
+  height: 390px;
+  float: center;
+}
+a {
+  color: red;
+  float: center;
+  font-size: 50px;
+}
