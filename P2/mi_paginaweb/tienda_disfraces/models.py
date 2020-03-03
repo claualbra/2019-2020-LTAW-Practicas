@@ -8,6 +8,12 @@ class Producto(models.Model):
     nombre = models.CharField(max_length=50)
     stock = models.IntegerField(default=0)
     precio = models.FloatField()
+    SIZES = (
+        ('S', 'Small'),
+        ('M', 'Medium'),
+        ('L', 'Large'),
+    )
+    size = models.CharField(max_length=1, choices=SIZES)
 
     # -- Usamos el nombre para identificar
     # -- el producto
