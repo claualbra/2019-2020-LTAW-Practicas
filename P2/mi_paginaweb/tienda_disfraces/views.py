@@ -8,7 +8,8 @@ from tienda_disfraces.models import Producto
 def index(request):
     return render(request, 'index.html', {})
 def halloween(request):
-    return render(request, 'halloween.html', {})
+    productos = Producto.objects.all()
+    return render(request, 'halloween.html', {'productos':productos})
 def navidad(request):
     return render(request, 'navidad.html', {})
 def ninos(request):

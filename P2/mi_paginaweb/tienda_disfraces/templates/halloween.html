@@ -11,23 +11,14 @@
     <h1 id="nombre">Tienda de disfraces</h1>
     <h2>Disfraces halloween</h2>
     <hr>
-    <div class="fotos">
-      <img src="{% static 'diablesa.jpg'%}" alt="Disfraz diablo chica">
-      <p>Disfraz diablesa</p>
-      <p>Precio: 26€</p>
-      <p>Tallas: S,M,L</p>
-    </div>
-    <div class="fotos">
-      <img src="{% static 'asesino.jpg'%}" alt="Disfraz asesino hombre">
-      <p>Disfraz asesino</p>
-      <p>Precio: 35€</p>
-      <p>Tallas: S,M,L,XL,XXL</p>
-    </div>
-    <div class="fotos">
-      <img src="{% static 'monja.jpg'%}" alt="Disfraz monja muerta">
-      <p>Disfraz monja muerta mujer</p>
-      <p>Precio: 50€</p>
-      <p>Tallas: S,M,L,XL</p>
-    </div>
+    {% for prod in productos %}
+        <div class="fotos">
+          <img src="{% static '' %}{{prod.img}}">
+          <p>{{ prod.nombre }}</p>
+          <p>Precio: {{prod.precio}}</p>
+          <p>Stock: {{prod.stock}}</p>
+          <p>Size: {{prod.size}}</p>
+        </div>
+    {% endfor %}
   </body>
 </html>

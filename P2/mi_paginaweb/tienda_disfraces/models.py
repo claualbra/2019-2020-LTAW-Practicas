@@ -14,7 +14,7 @@ class Producto(models.Model):
         ('L', 'Large'),
     )
     size = models.CharField(max_length=1, choices=SIZES)
-
+    img = models.CharField(max_length=50)
     # -- Usamos el nombre para identificar
     # -- el producto
     def __str__(self):
