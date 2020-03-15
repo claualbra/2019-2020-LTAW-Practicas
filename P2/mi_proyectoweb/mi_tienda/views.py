@@ -1,18 +1,135 @@
-from django.http import HttpResponse
-from django.template import Template, Context
+from django.shortcuts import render
+from random import randint
+from django.template import Context, Template
 from django.template.loader import get_template
 from django.shortcuts import render
-from tienda_disfraces.models import Disfraces_Halloween, Disfraces_Navidad, Disfraces_Ninos
+from mi_tienda.models import Producto, Pedido
 # Create your views here.
-# -- Vista principal de mi tienda de disfraces
+# -- Fichero mi_tienda/views.py
+from django.http import HttpResponse
+
+# -- Vista principal de mi tienda
+# -- El nombre de la vista puede ser cualquiera. Nosotros lo hemos
+# -- llamado index, pero se podría haber llamado pepito
 def index(request):
-    return render(request, 'index.html', {})
-def halloween(request):
-    productos = Disfraces_Halloween.objects.all()
-    return render(request, 'halloween.html', {'productos':productos})
-def navidad(request):
-    productos = Disfraces_Navidad.objects.all()
-    return render(request, 'navidad.html', {'productos':productos})
-def ninos(request):
-    productos = Disfraces_Ninos.objects.all()
-    return render(request, 'ninos.html', {'productos':productos})
+    return HttpResponse("Hola! esta es la página principal de Mi tienda!")
+# -- Ejemplo de generacion a partir de cadenas con código html
+def test1(request):
+
+    # -- Obtener el número aleatorio
+    numero = randint(0, 100)
+
+    # Párrafo a insertar
+    P = "<p>Numero aleatorio: " + str(numero) + " </p>"
+
+    PAGINA_INI = """
+    <!DOCTYPE html>
+    <html lang="es" dir="ltr">
+      <head>
+        <meta charset="utf-8">
+        <title>Test1</title>
+      </head>
+      <body>
+        <h1>TEST1</h1>
+    """
+
+    PAGINA_FIN = """
+      </body>
+    </html>
+    """
+    return HttpResponse(PAGINA_INI + P + PAGINA_FIN)
+
+# -- Ejemplo de generacion mediante una plantilla en el código
+def test2(request):
+
+    # -- Obtener el número aleatorio
+    numero = randint(0, 100)
+
+    PLANTILLA = """
+    <!DOCTYPE html>
+    <html lang="es" dir="ltr">
+      <head>
+        <meta charset="utf-8">
+        <title>Test2</title>
+      </head>
+      <body>
+        <h1>TEST2</h1>
+        <p> Numero aleatorio:  {{numero}} </p>
+      </body>
+    </html>
+    """
+
+    # --Procesar la plantilla de django
+    t = Template(PLANTILLA)
+
+    # -- Crear el contexto: Asignar el numero, cambia la variable numero dentro de la plantilla
+    c = Context({'numero': str(numero)})
+
+    # -- Obtener la pagina html final
+    html = t.render(c)
+
+    return HttpResponse(html)
+
+# -- Ejemplo de generacion mediante una plantilla en FICHERO
+def test3(request):
+
+    # -- Obtener el número aleatorio
+    numero = randint(0, 100)
+
+    # -- Leer la plantilla del fichero
+    t = get_template('test.html')
+
+    # -- Crear el contexto: Asignar el numero
+    c = {'numero': str(numero)}
+
+    # -- Obtener la pagina html final
+    html = t.render(c)
+
+    return HttpResponse(html)
+
+# -- Ejemplo de uso de la función Render
+def test4(request):
+    # -- Obtener el número aleatorio
+    numero = randint(0, 100)
+    return render(request, 'test.html', {'numero':str(numero)})
+
+def test5(request):
+    # -- Obtener el número aleatorio
+    numero = randint(0, 100)
+    return render(request, 'test5.html', {'numero':str(numero)})
+
+def list(request):
+    productos = Producto.objects.all()
+    html = "<h2>Listado de articulos</h2>"
+    for prod in productos:
+        print(prod.nombre)
+        html += '<p>'+ prod.nombre + ' ' + str(prod.precio) + '<p>'
+    return HttpResponse(html)
+def list2(request):
+    productos = Producto.objects.all()
+    return render(request, 'listado.html', {'productos':productos})
+
+def formulario1(request):
+    return render(request, 'formulario1.html', {})
+
+def recepcion1(request):
+    # -- Obtener el nombre de la persona
+    productos = Producto.objects.all()
+    persona = request.POST['nombre']
+    articulo = request.POST['articulo']
+    p = Pedido(nombre=persona, articulo=articulo)
+    p.save()
+    h = "false"
+    for i in productos:
+        print(i == articulo)
+        if i == articulo:
+            print("hola")
+            h = "true"
+            pass
+        pass
+    # -- Imprimirlo en la consola del servidor
+    print(f" PEDIDO RECIBIDO!!! ----> {h}")
+    print(f" PEDIDO RECIBIDO!!! ----> {persona}")
+    print(f" PEDIDO RECIBIDO!!! ----> {articulo}")
+
+    return HttpResponse("Datos recibidos!!. Comprador: " + persona)
