@@ -10,12 +10,13 @@
   <body>
     <h1 id="nombre">Tienda de disfraces</h1>
     <h2>Disfraces halloween</h2>
+    <a href="/tienda_disfraces/">Pagina principal de la tienda</a>
     <hr>
     {% for prod in productos %}
         <div class="fotos">
           <img src="{% static '' %}{{prod.img}}">
           <p>{{ prod.nombre }}</p>
-          <p>Precio: {{prod.precio}}</p>
+          <p>Precio: {{prod.precio}}€</p>
           <p>Stock: {{prod.stock}}</p>
           <p>Size: {{prod.size}}</p>
         </div>

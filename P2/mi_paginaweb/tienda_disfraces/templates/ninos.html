@@ -10,24 +10,16 @@
   <body>
     <h1 id="nombre">Tienda de disfraces</h1>
     <h2>Disfraces niños</h2>
+    <a href="/tienda_disfraces/">Pagina principal de la tienda</a>
     <hr>
-    <div class="fotos">
-      <img src="{% static 'marshall.jpg'%}" alt="Disfraz marsahll patrulla canina">
-      <p>Disfraz Marshall patrulla canina</p>
-      <p>Precio: 40€</p>
-      <p>Tallas: 3-6 años</p>
-    </div>
-    <div class="fotos">
-      <img src="{% static 'naruto.jpg'%}" alt="Disfraz Naruto">
-      <p>Disfraz Naruto</p>
-      <p>Precio: 45€</p>
-      <p>Tallas: 10-12 años </p>
-    </div>
-    <div class="fotos">
-      <img src="{% static 'goku.jpg'%}" alt="Disfraz Goku">
-      <p>Disfraz monja muerta mujer</p>
-      <p>Precio: 40€</p>
-      <p>Tallas: 8-10 años</p>
-    </div>
+    {% for prod in productos %}
+        <div class="fotos">
+          <img src="{% static '' %}{{prod.img}}">
+          <p>{{ prod.nombre }}</p>
+          <p>Precio: {{prod.precio}}€</p>
+          <p>Stock: {{prod.stock}}</p>
+          <p>Size: {{prod.size}}</p>
+        </div>
+    {% endfor %}
   </body>
 </html>
