@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title> FORMULARIO</title>
+    <meta charset="utf-8">
+    <link rel=StyleSheet href="{% static 'css/formulario.css'%}">
+    <link rel="icon" href="{% static 'foto.ico'%}">
+  </head>
+  <body>
+    <h1> Formulario de pedido </h1>
+    <hr>
+    <p> A continuación, rellene los siguientes datos para poder tramitar la solicitud. </p>
+    <div>
+      <a href="/tienda_disfraces/">Pagina principal de la tienda</a>
+      <form  action="/tienda_disfraces/recepcion/" method="post">
+        {% csrf_token %}
+        <label>Nombre de la persona que hace el pedido: <label>
+        <input type="text" name="nombre" value="Anonimo" /><br>
+        <label>Nombre del producto: <label>
+        <input type="text" name="articulo" value="" /><br>
+        <input type="submit" value="ENVIAR" />
+      </form>
+    </div>
+  </body>
+</html>

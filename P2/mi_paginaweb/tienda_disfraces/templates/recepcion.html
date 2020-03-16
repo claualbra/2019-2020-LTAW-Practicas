@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>PEDIDO</title>
+    <meta charset="utf-8">
+    <link rel=StyleSheet href="{% static 'css/formulario.css'%}">
+    <link rel="icon" href="{% static 'foto.ico'%}">
+  </head>
+  <body>
+    <h1> Pedido Finalizado </h1>
+    <hr>
+    <p> Revisa que tu pedido se ha realizado con exito y que los parámetros son correctos. </p>
+    <div>
+      <a href="/tienda_disfraces/">Pagina principal de la tienda</a>
+      <p>¡¡Gracias {{persona}} por comprar en nuestra tiena!!</p>
+      <p>Usted ha comprado: {{articulo}}</p>
+      <p>Vuelve pronto</p>
+    </div>
+  </body>
+</html>

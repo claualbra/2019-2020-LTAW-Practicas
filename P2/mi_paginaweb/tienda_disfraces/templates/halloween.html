@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <title>Tienda de disfraces</title>
-    <link rel="stylesheet" href="{% static 'css/csshalloween.css'%}">
+    <link rel="stylesheet" href="{% static 'css/halloween.css'%}">
     <link rel="icon" href="{% static 'foto.ico'%}">
   </head>
   <body>
@@ -21,5 +21,9 @@
           <p>Size: {{prod.size}}</p>
         </div>
     {% endfor %}
+    <a href="/static/about.html">Información de la tienda</a>
+    <div>
+      <a href="/tienda_disfraces/formulario">Hacer un pedido</a>
+    </div>
   </body>
 </html>
