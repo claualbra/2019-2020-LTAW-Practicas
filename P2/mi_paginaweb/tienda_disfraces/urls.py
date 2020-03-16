@@ -12,5 +12,6 @@ urlpatterns = [
     path('halloween.html/', views.halloween, name='halloween'),
     path('navidad.html/', views.navidad, name='navidad'),
     path('ninos.html/', views.ninos, name='ninos'),
-    path('list_halloween/', views.list_halloween, name='list_halloween'),
+    path('formulario/', views.formulario, name='formulario'),
+    path('recepcion/', views.recepcion, name='reception'),
 ]
