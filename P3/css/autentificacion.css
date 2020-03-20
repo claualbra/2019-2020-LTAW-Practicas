@@ -1,0 +1,19 @@
+body {
+  background-color: lightblue;
+}
+div{
+  text-align: center;
+}
+p {
+  color: blue;
+  font-size: 50px;
+}
+
+h1{
+  font-size: 100px;
+}
+
+a {
+  color: red;
+  font-size: 50px;
+}

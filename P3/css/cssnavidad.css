@@ -1,0 +1,23 @@
+body{
+  color: red;
+  background-image: url("fondonavidad.jpg");
+  background-size: cover;
+  font-size: 20px;
+}
+#nombre{
+  text-align: center;
+  font-size: 100px;
+}
+img{
+  width: 300px;
+  height: 300px;
+}
+
+.fotos{
+  margin: 50px 0px 0px 200px;
+  float: left;
+}
+
+a{
+  color: red;
+}
