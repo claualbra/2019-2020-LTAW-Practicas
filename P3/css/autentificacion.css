@@ -7,6 +7,7 @@ div{
 p {
   color: blue;
   font-size: 50px;
+  text-align: center;
 }
 
 h1{
@@ -16,4 +17,16 @@ h1{
 a {
   color: red;
   font-size: 50px;
+}
+input{
+  font-size: 25px;
+  margin: 0px 0px 10px 0px;
+}
+label{
+  font-size: 25px;
+}
+li{
+  color: blue;
+  font-size: 50px;
+  text-align: center;
 }
