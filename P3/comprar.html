@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Comprar</title>
+    <link rel="stylesheet" href="css/autentificacion.css">
+    <link rel="icon" href="img/foto.ico">
+  </head>
+  <body>
+    <div>
+      <h1>Datos para realizar la compra</h1>
+      <p> A continuación, rellene los siguientes datos para poder tramitar la solicitud. </p>
+      <form action="/respuesta.html" method="post">
+        <label for="Nombre">Nombre:</label>
+        <input type="text" name="Nombre"/> <br>
+        <label for="Apellidos">Apellidos:</label>
+        <input type="text" name="Apellidos"/><br>
+        <label for="Correo">Correo electrónico:</label>
+        <input type="text" name="Correo electrónico"/><br>
+        <label for="Pago">Metodo de pago:</label>
+        <input type="radio" name="Pago" value="paypal">
+        <label for="paypal">Paypal</label>
+        <input type="radio" name="Pago" value="tarjeta de crédito">
+        <label for="tarjeta">Tarjeta de crédito</label>
+        <input type="radio" name="Pago" value="transferencia bancaria">
+        <label for="transferencia">Transferencia bancaria</label><br>
+        <input type="submit" value="Enviar"/>
+        <p>Si quiere añadir mas productos:</p>
+        <a href="index.html">Pagina principal</a>
+      </form>
+    </div>
+  </body>
+</html>
