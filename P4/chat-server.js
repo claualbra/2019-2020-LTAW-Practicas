@@ -15,6 +15,7 @@ const io = require('socket.io')(http);
 //-- Puerto donde lanzar el servidor
 const PORT = 8080
 var contador = 0;
+var usuario = 0;
 
 function hoyFecha(){
     var hoy = new Date();
@@ -54,12 +55,13 @@ app.use('/', express.static(__dirname +'/'));
 //-- Un nuevo cliente se ha conectado!
 io.on('connection', function(socket){
   contador += 1;
+  usuario += 1;
   //-- Usuario conectado. Imprimir el identificador de su socket
   console.log('--> Usuario conectado!. Socket id: ' + socket.id);
 
   //-- Le damos la bienvenida a través del evento 'hello'
   //-- ESte evento lo hemos creado nosotros para nuestro chat
-  socket.emit('hello', "Bienvenido al Chat");
+  socket.emit('hello', "Bienvenido al Chat, eres el usuario número " + usuario);
 
   //-- Función de retrollamada de mensaje recibido del cliente
   socket.on('msg', (msg) => {
@@ -69,7 +71,7 @@ io.on('connection', function(socket){
     io.emit('msg', msg);
   })
   socket.on('cmd', (msg) => {
-    socket.emit('cmd', msg);
+    //--socket.emit('cmd', msg);
     switch (msg) {
       case '/help':
         comand = 'Los comandos soportados son: <br> <ul>/help</ul>'+
