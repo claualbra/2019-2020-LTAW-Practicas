@@ -7,17 +7,22 @@ from tienda_disfraces.models import Disfraces_Halloween, Disfraces_Navidad, Disf
 # -- Vista principal de mi tienda de disfraces
 def index(request):
     return render(request, 'index.html', {})
+#--vista de los disfraces de halloween
 def halloween(request):
     productos = Disfraces_Halloween.objects.all()
     return render(request, 'halloween.html', {'productos':productos})
+#--vista de los disfraces de navidad
 def navidad(request):
     productos = Disfraces_Navidad.objects.all()
     return render(request, 'navidad.html', {'productos':productos})
+#--vista de los disfraces de niños
 def ninos(request):
     productos = Disfraces_Ninos.objects.all()
     return render(request, 'ninos.html', {'productos':productos})
+#--vista para el formulario de pedidos
 def formulario(request):
     return render(request, 'formulario.html', {})
+#--vista de la recpción delpedido
 def recepcion(request):
     # -- Obtener el nombre de la persona
     persona = request.POST['nombre']
