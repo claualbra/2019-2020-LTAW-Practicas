@@ -22,7 +22,7 @@ def ninos(request):
 #--vista para el formulario de pedidos
 def formulario(request):
     return render(request, 'formulario.html', {})
-#--vista de la recpción delpedido
+#--vista de la recpción del pedido
 def recepcion(request):
     # -- Obtener el nombre de la persona
     persona = request.POST['nombre']

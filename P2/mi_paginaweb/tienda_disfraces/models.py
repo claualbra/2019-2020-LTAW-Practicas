@@ -4,7 +4,7 @@ from django.db import models
 
 class Disfraces_Halloween(models.Model):
     """Modelo de datos de mis productos"""
-
+    #--cada producto estará formado de un nombre, el stock,precio, talla y una imagen
     nombre = models.CharField(max_length=50)
     stock = models.IntegerField(default=0)
     precio = models.FloatField()
@@ -22,7 +22,7 @@ class Disfraces_Halloween(models.Model):
 
 class Disfraces_Navidad(models.Model):
     """Modelo de datos de mis productos"""
-
+    #--cada producto estará formado de un nombre, el stock,precio, talla y una imagen
     nombre = models.CharField(max_length=50)
     stock = models.IntegerField(default=0)
     precio = models.FloatField()
@@ -40,7 +40,7 @@ class Disfraces_Navidad(models.Model):
 
 class Disfraces_Ninos(models.Model):
     """Modelo de datos de mis productos"""
-
+    #--cada producto estará formado de un nombre, el stock,precio, talla y una imagen
     nombre = models.CharField(max_length=50)
     stock = models.IntegerField(default=0)
     precio = models.FloatField()
@@ -58,6 +58,7 @@ class Disfraces_Ninos(models.Model):
 
 class Pedido(models.Model):
     """Modelo de datos de mis productos"""
+    #--El pedido estará formado por el nombre del comprador y el articulo
     nombre = models.CharField(max_length=50)
     articulo = models.CharField(max_length=50)
     # -- Usamos el nombre para identificar
