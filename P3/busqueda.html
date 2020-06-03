@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Buscador</title>
+    <link rel="stylesheet" href="css/autentificacion.css">
+    <link rel="icon" href="img/foto.ico">
+    <script src="client-2.js" defer></script>
+  </head>
+  <body>
+    <div>
+      <h1>Buscar producto</h1>
+      <p>Pofavor introduce el nombre del producto para buscar informción</p>
+      <form action="/informacion" method="post">
+        <label for="Disfraz">Disfraz de:</label>
+        <input type="text" name="Disfraz" onkeyup="productos(this.value)"/>
+        <input type="submit" value="Buscar"/>
+        <p>Sugerencias: <span id="sugerencias"></span></p>
+        <p>Si quieres volver al inicio:</p>
+        <a href="index.html">[Pagina principal]</a>
+      </form>
+    </div>
+  </body>
+</html>
