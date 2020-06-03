@@ -20,3 +20,6 @@ a {
 #lista{
   text-align: center;
 }
+#buscar{
+  float: right;
+}
