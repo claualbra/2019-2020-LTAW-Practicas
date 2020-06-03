@@ -62,7 +62,8 @@ io.on('connection', function(socket){
   //-- Le damos la bienvenida a través del evento 'hello'
   //-- ESte evento lo hemos creado nosotros para nuestro chat
   socket.emit('hello', "Bienvenido al Chat, eres el usuario número " + usuario);
-
+  //--se envia un mensaje a todos diciendo que un nuevo usurario se ha conectado
+  socket.broadcast.emit('msg', "Se ha conectado el usurio número " + usuario);
   //-- Función de retrollamada de mensaje recibido del cliente
   socket.on('msg', (msg) => {
     console.log("Cliente: " + socket.id + ': ' + msg);
