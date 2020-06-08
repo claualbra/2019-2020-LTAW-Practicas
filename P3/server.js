@@ -41,8 +41,10 @@ http.createServer((req, res) => {
   let str = filename.substr(1)
   //--Se comprueba si el fichero es un html y no es el fichero login.html
   if (str.split(".")[1]=="html" && str!="login.html") {
-    //--comprobando si hay cookies
-    if (!cookie) {
+    console.log('hola');
+    console.log();
+    //--comprobando si hay cookie de autentificación
+    if (!cookie.includes("user=")) {
       //--si no hay cookies te manda a la pagina para autentificarte
       str = "autentificacion.html"
     }
@@ -164,7 +166,8 @@ http.createServer((req, res) => {
     const params = q.query;
     if (params.p.length!=0) {
       for (var i = 0; i < productos.length; i++) {
-        if (productos[i].startsWith(params.p.toLowerCase())){
+        //--si a la 3 letra coincide con alguno de los productos
+        if (productos[i].startsWith(params.p.toLowerCase()) && params.p.length >= 3){
           resultado.push(productos[i])
         }
       }
